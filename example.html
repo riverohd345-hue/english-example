@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>امتحان اللغة الإنجليزية</title>
+<style>
+body {
+  font-family: Arial;
+  direction: rtl;
+  text-align: center;
+  margin-top: 60px;
+}
+input, button {
+  padding: 10px;
+  font-size: 16px;
+}
+.result {
+  margin-top: 25px;
+  font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<h2>إدخال الاسم الرباعي</h2>
+
+<input type="text" id="name" placeholder="اكتب اسمك الرباعي">
+<br><br>
+<button onclick="generate()">عرض البيانات</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function generate() {
+  const name = document.getElementById("name").value.trim();
+  const result = document.getElementById("result");
+
+  if (name === "") {
+    result.innerHTML = "رجاءً أدخل الاسم الرباعي ❗";
+    return;
+  }
+
+  // رقم جلوس من 100 إلى 199
+  const seatNumber = Math.floor(Math.random() * 100) + 100;
+
+  // الموعدين
+  const times = [
+    "الخميس 12:00 PM - 02:10 PM",
+    "الخميس 03:00 PM - 05:10 PM"
+  ];
+
+  // اختيار موعد عشوائي
+  const examTime = times[Math.floor(Math.random() * times.length)];
+
+  result.innerHTML = `
+    الاسم: ${name}<br>
+    رقم الجلوس: ${seatNumber}<br>
+    موعد الامتحان: ${examTime}
+  `;
+}
+</script>
+
+</body>
+</html>
